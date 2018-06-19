@@ -24,7 +24,8 @@ mix.combine([
     'node_modules/datatables-all/media/css/dataTables.bootstrap.min.css',
     'node_modules/admin-lte/dist/css/AdminLTE.min.css',
     'node_modules/icheck/skins/square/blue.css',
-    'node_modules/admin-lte/dist/css/skins/_all-skins.min.css'
+    'node_modules/admin-lte/dist/css/skins/_all-skins.min.css',
+    'node_modules/boostrap-datepicker/dist/css/bootstrap-datepicker.css'
     ], 'public/css/admin-vendor.css');
 
 // Combine Admin All CSS
@@ -44,6 +45,7 @@ mix.combine([
     'node_modules/chosen-js/chosen.jquery.js',
     'node_modules/icheck/icheck.min.js',
     'node_modules/admin-lte/dist/js/app.min.js',
+    'node_modules/bootstrap-datepicker/js/bootstrap-datepicker.js'
     //'node_modules/turbolinks/dist/turbolinks.js', // conflict with datatable
     ], 'public/js/admin-vendor.js');
 

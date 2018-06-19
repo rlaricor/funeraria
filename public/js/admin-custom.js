@@ -21,7 +21,7 @@ function renderBoolColumn(tableauID, boolClass) {
     |------------------------------------------------------------------------------------
     */
     $('.datetime').datetimepicker({
-         format: 'Y-m-d H:i'
+         format: 'd-m-Y H:i'
     });
 
     /*
@@ -79,6 +79,10 @@ function renderBoolColumn(tableauID, boolClass) {
                 _this.closest("form").submit();
             }
         });
+    });
+
+    $.fn.datepicker.defaults.format = "dd/mm/yyyy";
+    $('.datepicker').datepicker({
     });
 
 

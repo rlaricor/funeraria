@@ -15,7 +15,7 @@
         !!}
 
         <div class="box-body" style="margin:10px;">
-          @include('admin.categories.form')
+          @include('admin.servicios.create_form')
         </div>
 
       	<div class="box-footer" style="background-color:#f5f5f5;border-top:1px solid #d2d6de;">
