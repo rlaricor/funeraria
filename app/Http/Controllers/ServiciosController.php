@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Contratista;
 use App\Documento;
@@ -12,6 +13,9 @@ use App\Pago;
 use App\Persona;
 use App\Servicio;
 use App\TipoSeguro;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Carbon;
 
 class ServiciosController extends Controller
 {
@@ -35,7 +39,8 @@ class ServiciosController extends Controller
     {
         $contratistas = Contratista::OrderBy('nombre','ASC')->pluck('nombre','id');
         $tipo_seguros = TipoSeguro::OrderBy('nombre','ASC')->get();
-        return view('admin.servicios.create', compact('contratistas','tipo_seguros'));
+        $lugar_inscripciones = LugarInscripcion::OrderBy('nombre','ASC')->pluck('nombre','id');
+        return view('admin.servicios.create', compact('contratistas','tipo_seguros','lugar_inscripciones'));
     }
 
     /**
@@ -46,7 +51,23 @@ class ServiciosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Servicio::create([
+            'tipo' => $request['tipo'],
+            'user_id' => Auth::user()->id,
+            'n_contrato' => $request['n_contrato'],
+            'fecha_contrato' => Carbon::parse($request['fecha_contrato'])->format('Y-m-d'),
+            'contratista_id' => $request['contratista_id'],
+            'obs_tipo_seguro' => $request['obs_tipo_seguro'],
+            'fecha_defuncion' => Carbon::parse($request['fecha_defuncion'])->format('Y-m-d'),
+            'dni_difunto' => $request['dni_difunto'],
+            'nombres_difunto' => $request['nombres_difunto'],
+            'apellidos_difunto' => $request['apellidos_difunto'],
+            'lugar_inscripcion_id' => $request['lugar_inscripcion_id'],
+            'total_servicio' => $request['total_servicio'],
+            'cobro_seguro' => $request['cobro_seguro'],
+        ]);
+        return redirect()->route('admin.servicios.index')->with('info','Servicio creado');
+
     }
 
     /**

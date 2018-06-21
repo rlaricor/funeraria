@@ -1847,3 +1847,9 @@ jQuery('#fecha_contrato').datetimepicker({
     format:'d-m-Y',
     lang:'es'
 });
+
+jQuery('#fecha_defuncion').datetimepicker({
+    timepicker:false,
+    format:'d-m-Y',
+    lang:'es'
+});

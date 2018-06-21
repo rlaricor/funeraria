@@ -3,7 +3,7 @@
     <div class="col-md-12">
         <div class="col-md-3">
             {{ Form::label('name', 'Nro de Contrato') }}
-            {{ Form::text('nro_contrato', null, ['class' => 'form-control', 'id' => 'nro_contrato']) }}
+            {{ Form::text('n_contrato', null, ['class' => 'form-control', 'id' => 'n_contrato']) }}
         </div>
         <div class="col-md-3">
             {{ Form::label('name', 'Tipo Contrato') }}
@@ -52,6 +52,26 @@
         <div class="col-md-3">
             {{ Form::label('name', 'Apellidos Difunto') }}
             {{ Form::text('apellidos_difunto', null, ['class' => 'form-control', 'id' => 'apellidos_difunto']) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-3">
+            {{ Form::label('name', 'Lugar de Inscripcion') }}
+            {{ Form::select('lugar_inscripcion_id', $lugar_inscripciones , null, ['class' => 'form-control', 'placeholder' => 'Seleccionar']) }}
+        </div>
+        <div class="col-md-3">
+            {{ Form::label('name', 'Total Servicio') }}
+            {{ Form::text('total_servicio', null, ['class' => 'form-control', 'id' => 'total_servicio']) }}
+        </div>
+        <div class="col-md-3">
+            {{ Form::label('name', 'Pagado Servicio') }}
+            {{ Form::text('pagado_servicio', null, ['class' => 'form-control', 'id' => 'pagado_servicio','disabled']) }}
+        </div>
+        <div class="col-md-3">
+            {{ Form::label('name', 'Cobro Seguro') }}
+            {{ Form::text('cobro_seguro', null, ['class' => 'form-control', 'id' => 'cobro_seguro',]) }}
         </div>
     </div>
 </div>

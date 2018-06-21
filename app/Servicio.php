@@ -8,7 +8,7 @@ class Servicio extends Model
 {
 
   protected $fillable = [
-      'tipo', 'n_contrato', 'fecha_contrato', 'contratista_id', 'tipo_sseguro_id', 'fecha_defuncion', 'dni_difunto', 'nombres_difunto', 'apellidos_difunto', 'lugar_inscripcion_id', 'obs_lugar_inscripcion', 'total_servicio', 'pagado_servicio', 'cobro_Seguro', 'user_id'
+      'tipo', 'n_contrato', 'fecha_contrato', 'contratista_id', 'obs_tipo_seguro', 'fecha_defuncion', 'dni_difunto', 'nombres_difunto', 'apellidos_difunto', 'lugar_inscripcion_id', 'total_servicio', 'pagado_servicio', 'cobro_seguro', 'user_id'
   ];
 
   public function tipo_seguros()
