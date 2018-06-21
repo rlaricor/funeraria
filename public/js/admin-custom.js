@@ -81,9 +81,19 @@ function renderBoolColumn(tableauID, boolClass) {
         });
     });
 
-    $.fn.datepicker.defaults.format = "dd/mm/yyyy";
-    $('.datepicker').datepicker({
-    });
+
 
 
 })(jQuery);
+
+jQuery('#fecha_contrato').datetimepicker({
+    timepicker:false,
+    format:'d-m-Y',
+    lang:'es'
+});
+
+jQuery('#fecha_defuncion').datetimepicker({
+    timepicker:false,
+    format:'d-m-Y',
+    lang:'es'
+});

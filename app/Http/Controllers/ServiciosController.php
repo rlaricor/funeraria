@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Servicio;
-use App\Pago;
-use App\Persona;
+use App\Contratista;
 use App\Documento;
 use App\Estado;
 use App\LugarInscripcion;
+use App\Pago;
+use App\Persona;
+use App\Servicio;
+use App\TipoSeguro;
 
 class ServiciosController extends Controller
 {
@@ -31,7 +33,9 @@ class ServiciosController extends Controller
      */
     public function create()
     {
-        return view('admin.servicios.create');
+        $contratistas = Contratista::OrderBy('nombre','ASC')->pluck('nombre','id');
+        $tipo_seguros = TipoSeguro::OrderBy('nombre','ASC')->get();
+        return view('admin.servicios.create', compact('contratistas','tipo_seguros'));
     }
 
     /**
