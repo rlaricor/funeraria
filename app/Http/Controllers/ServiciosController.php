@@ -51,7 +51,7 @@ class ServiciosController extends Controller
      */
     public function store(Request $request)
     {
-        Servicio::create([
+        /*Servicio::create([
             'tipo' => $request['tipo'],
             'user_id' => Auth::user()->id,
             'n_contrato' => $request['n_contrato'],
@@ -66,7 +66,17 @@ class ServiciosController extends Controller
             'total_servicio' => $request['total_servicio'],
             'cobro_seguro' => $request['cobro_seguro'],
         ]);
-        return redirect()->route('admin.servicios.index')->with('info','Servicio creado');
+        TipoSeguro::create([
+
+        ]);*/
+        $servicio = new Servicio($request->all());
+        $servicio->user_id = Auth::user()->id;
+        $servicio->fecha_contrato = Carbon::parse($request['fecha_contrato'])->format('Y-m-d');
+        $servicio->fecha_defuncion = Carbon::parse($request['fecha_defuncion'])->format('Y-m-d');
+        $servicio->save();
+        $servicio->tipo_seguros()->sync($request['tipo_seguros']);
+        return redirect()->route('admin.servicios.edit',$servicio->id)->with('info','Servicio creado');
+
 
     }
 
@@ -96,7 +106,24 @@ class ServiciosController extends Controller
      */
     public function edit($id)
     {
-        //
+        //Optimizar consultas
+        $servicio = Servicio::find($id);
+        $contratistas = Contratista::OrderBy('nombre','ASC')->pluck('nombre','id');
+        $contratista = Servicio::find($id)->contratista()->get();
+        $tipo_seguros = Servicio::find($id)->tipo_seguros()->get();
+        $lugar_inscripciones = LugarInscripcion::OrderBy('nombre','ASC')->pluck('nombre','id');
+        $lugar_inscripcion = Servicio::find($id)->lugar_inscripcion()->get();
+        $pagos = Pago::where('servicio_id','=',$id)->orderBy('id','asc')->get();
+        $personas = Servicio::find($id)->personas()->with('celulares','direcciones','emails')->get();
+        $seguros = Servicio::find($id)->tipo_seguros()->get();
+        $documentos = Servicio::find($id)->documentos()->with('tipo_documento')->get();
+        $estados = Servicio::find($id)->estados()->get();
+        //var_dump($servicio);
+        //foreach($documentos as $documento){
+        //print $documento->tipo_documento;
+        //}
+
+        return view('admin.servicios.edit',compact('servicio', 'contratistas', 'contratista', 'tipo_seguros', 'lugar_inscripciones','lugar_inscripcion', 'pagos','personas','seguros','documentos','estados'));
     }
 
     /**

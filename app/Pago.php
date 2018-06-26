@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pago extends Model
 {
+
+    protected $dates = [
+        'fecha_pago',
+    ];
   protected $fillable = [
-      'servicio_id', 'pago', 'fecha_pago', 'observacion_pago', 'user_id'
+      'servicio_id', 'pago', 'observacion_pago', 'user_id'
   ];
 
   public function servicio()
@@ -18,4 +22,8 @@ class Pago extends Model
   public function user(){
        return $this->belongsTo('App\User');
   }
+
+    public function ffecha_pago(){
+        return $this->fecha_pago->format('d-m-Y');
+    }
 }

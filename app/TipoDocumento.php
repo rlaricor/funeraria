@@ -10,7 +10,7 @@ class TipoDocumento extends Model
       'nombre', 'slug'
   ];
 
-  public function documento()
+  public function documentos()
   {
     return $this->hasMany('App\Documento');
   }

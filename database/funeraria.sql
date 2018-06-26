@@ -3,15 +3,15 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 100131
+ Source Server Version : 100132
  Source Host           : localhost:3306
  Source Schema         : funeraria
 
  Target Server Type    : MySQL
- Target Server Version : 100131
+ Target Server Version : 100132
  File Encoding         : 65001
 
- Date: 21/06/2018 16:29:28
+ Date: 25/06/2018 22:26:39
 */
 
 SET NAMES utf8mb4;
@@ -613,7 +613,7 @@ CREATE TABLE `estados`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `servicio_id` int(10) UNSIGNED NOT NULL,
   `estado` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha_estado` date NOT NULL,
+  `fecha_estado` date NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
@@ -1308,7 +1308,7 @@ CREATE TABLE `servicio_tipo_seguro`  (
   INDEX `servicio_tipo_seguro_tipo_seguro_id_foreign`(`tipo_seguro_id`) USING BTREE,
   CONSTRAINT `servicio_tipo_seguro_servicio_id_foreign` FOREIGN KEY (`servicio_id`) REFERENCES `servicios` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `servicio_tipo_seguro_tipo_seguro_id_foreign` FOREIGN KEY (`tipo_seguro_id`) REFERENCES `tipo_seguros` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 121 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 125 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of servicio_tipo_seguro
@@ -1433,6 +1433,7 @@ INSERT INTO `servicio_tipo_seguro` VALUES (117, 457, 18, NULL, NULL, NULL);
 INSERT INTO `servicio_tipo_seguro` VALUES (118, 472, 18, NULL, NULL, NULL);
 INSERT INTO `servicio_tipo_seguro` VALUES (119, 520, 25, NULL, NULL, NULL);
 INSERT INTO `servicio_tipo_seguro` VALUES (120, 604, 19, NULL, NULL, NULL);
+INSERT INTO `servicio_tipo_seguro` VALUES (124, 624, 20, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for servicios
@@ -1464,7 +1465,7 @@ CREATE TABLE `servicios`  (
   CONSTRAINT `servicios_contratista_id_foreign` FOREIGN KEY (`contratista_id`) REFERENCES `contratistas` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `servicios_lugar_inscripcion_id_foreign` FOREIGN KEY (`lugar_inscripcion_id`) REFERENCES `lugar_inscripcions` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `servicios_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 620 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 625 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of servicios
@@ -1581,7 +1582,7 @@ INSERT INTO `servicios` VALUES (604, 'SERVICIO', '280', '2018-06-08', 22, NULL, 
 INSERT INTO `servicios` VALUES (608, 'SERVICIO', '150', '2017-12-23', 23, NULL, '2017-12-23', NULL, 'JUANA PILARSA', 'HUARACHA CONTRERAS', NULL, 1600.00, NULL, '----', 5, NULL, '2018-06-10 00:00:00', '2018-06-10 00:00:00');
 INSERT INTO `servicios` VALUES (612, 'SERVICIO', '148', '2017-12-21', 22, NULL, '2017-12-21', '1201137', 'ANTONIA', 'SOTO VDA. DE BERNEDO', 8, 6000.00, NULL, '----', 5, NULL, '2018-06-09 00:00:00', '2018-06-09 00:00:00');
 INSERT INTO `servicios` VALUES (614, 'SERVICIO', '147', '2017-12-20', 22, NULL, '2017-12-20', NULL, 'TOMAS ', 'MANCHEGO CONDORI', NULL, 200.00, NULL, '----', 5, NULL, '2018-06-08 20:58:41', '2018-06-08 20:58:41');
-INSERT INTO `servicios` VALUES (619, 'SERVICIO', '280a', '2018-06-21', 23, 'dsa', '2018-06-17', '321', '321', '321', 8, 5000.00, NULL, 'dsa', 1, NULL, '2018-06-21 22:09:50', '2018-06-21 22:09:50');
+INSERT INTO `servicios` VALUES (624, 'SERVICIO', '280a', '2018-06-25', 24, 'Observacion', '2018-06-24', '44727143', 'Raul', 'Larico Ramos', 32, 6000.00, NULL, 'SI', 1, NULL, '2018-06-25 23:35:47', '2018-06-25 23:35:47');
 
 -- ----------------------------
 -- Table structure for tipo_documentos

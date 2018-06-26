@@ -1,4 +1,3 @@
-<?php $title = isset($item) ? $item->name: "agregar servicio" ?>
 <div class="row">
     <div class="col-md-12">
         <div class="col-md-3">
@@ -25,7 +24,7 @@
             {{ Form::label('name', 'Tipo de Seguro') }} <br/>
             @foreach($tipo_seguros as $tipo_seguro)
                 <label>
-                    {{ Form::checkbox('tipo_seguro_id[]', $tipo_seguro->id) }} {{ $tipo_seguro->nombre }}
+                    {{ Form::checkbox('tipo_seguros[]', $tipo_seguro->id) }} {{ $tipo_seguro->nombre }}
                 </label>
             @endforeach
         </div>
