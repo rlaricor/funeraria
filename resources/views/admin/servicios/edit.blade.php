@@ -34,7 +34,9 @@
     <div class="col-md-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h4>Personas</h4>
+                <span>Personas</span>&nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="{{ route(ADMIN . '.personas.create') }}" title="Agregar Persona">
+                    <i class="fa fa-plus" style="vertical-align:middle"></i>
+                </a>
             </div>
             <div class="panel-body">
                 <table class="table table-striped">
