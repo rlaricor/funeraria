@@ -34,7 +34,7 @@
     <div class="col-md-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <span>Personas</span>&nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="{{ route(ADMIN . '.personas.create') }}" title="Agregar Persona">
+                <span>Personas</span>&nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="{{ url('admin\personas\crear', $servicio->id) }}" title="Agregar Persona">
                     <i class="fa fa-plus" style="vertical-align:middle"></i>
                 </a>
             </div>

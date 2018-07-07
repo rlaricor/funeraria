@@ -28,10 +28,10 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware' => ['auth']],
     Route::get('/', ['uses'=>'DashboardController@index', 'as'=>'dash']);
     Route::resource('categories', 'CategoriesController')->middleware('Role:Superadmin');
     Route::resource('servicios', 'ServiciosController')->middleware('Role:Superadmin|Admin|Manager');
-    Route::resource('personas', 'PersonasController')->middleware('Role:Superadmin|Admin|Manager');
     Route::resource('users', 'UsersController')->middleware('Role:Superadmin|Admin');
     Route::get('profileedit/{id}', 'ProfileController@edit');
     Route::put('profileupdate/{id}', 'ProfileController@update');
+    Route::get('personas/crear/{id}', 'PersonasController@crear');
 });
 
 Route::get('lista_servicios', function () {

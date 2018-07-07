@@ -34,7 +34,7 @@ class PersonasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "store";
     }
 
     /**
@@ -80,5 +80,11 @@ class PersonasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function crear($id)
+    {
+        //return "hola".$id;
+        return view('admin.personas.create', compact('id'));
     }
 }
