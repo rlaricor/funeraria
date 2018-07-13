@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Persona;
 use Illuminate\Http\Request;
 
 class PersonasController extends Controller
@@ -21,9 +22,9 @@ class PersonasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('admin.personas.create');
+        return view('admin.personas.create',compact($id));
     }
 
     /**
@@ -34,7 +35,15 @@ class PersonasController extends Controller
      */
     public function store(Request $request)
     {
-        return "store";
+        //dd($request);
+        $servicio_id = $request->servicio_id;
+        $persona = new Persona($request->all());
+        $persona->celulares()->createMany($request->celulares);
+        //$persona->direcciones()->associate($request->direcciones);
+        //$persona->emails()->associate($request->emails);
+        $persona->save();
+        $persona->servicios()->sync($request->servicio_id);
+
     }
 
     /**

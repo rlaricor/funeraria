@@ -20,7 +20,7 @@
 
       	<div class="box-footer" style="background-color:#f5f5f5;border-top:1px solid #d2d6de;">
       	  <button type="submit" class="btn btn-info" style="width:100px;">Guardar</button>
-          <a class="btn btn-warning " href="{{ route(ADMIN.'.personas.index') }}" style="width:100px;"><i class="fa fa-btn fa-back"></i>Cancelar</a>
+          <a class="btn btn-warning " href="{{ route(ADMIN . '.servicios.edit', $id) }}" style="width:100px;"><i class="fa fa-btn fa-back"></i>Cancelar</a>
       	</div>
 
         {!! Form::close() !!}

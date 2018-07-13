@@ -32,6 +32,7 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware' => ['auth']],
     Route::get('profileedit/{id}', 'ProfileController@edit');
     Route::put('profileupdate/{id}', 'ProfileController@update');
     Route::get('personas/crear/{id}', 'PersonasController@crear');
+    Route::post('personas/crear', 'PersonasController@store');
 });
 
 Route::get('lista_servicios', function () {
