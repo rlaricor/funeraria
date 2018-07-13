@@ -35,10 +35,9 @@ class PersonasController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
-        $servicio_id = $request->servicio_id;
+        dd($request);
         $persona = new Persona($request->all());
-        $persona->celulares()->createMany($request->celulares);
+        $persona->celulares()->create($request->celulares);
         //$persona->direcciones()->associate($request->direcciones);
         //$persona->emails()->associate($request->emails);
         $persona->save();
